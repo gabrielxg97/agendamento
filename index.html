@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendamento COMPETI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      text-align: center;
+      padding: 40px;
+      border-radius: 15px;
+      background: #111;
+      box-shadow: 0 0 20px rgba(0,172,255,0.3);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #00ACFF;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: linear-gradient(45deg, #00ACFF, #8025FF);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    .offline {
+      color: #00C786;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="conteudo"></div>
+
+<script>
+  const agora = new Date();
+  const hora = agora.getHours();
+  const dia = agora.getDay(); // 0 = domingo
+
+  // Configuração
+  const inicio = 8;
+  const fim = 18;
+
+  if (hora >= inicio && hora < fim && dia !== 0 && dia !== 6) {
+    document.getElementById("conteudo").innerHTML =
+      `<h1>COMPETI SISTEMAS</h1>
+       <p>Agendamento disponível</p>
+       <a class="btn" href="https://calendar.app.google/GeAM7tyXNNRSiSns8" target="_blank">
+       Agendar agora
+       </a>`;
+  } else {
+    document.getElementById("conteudo").innerHTML =
+      `<h1>COMPETI SISTEMAS</h1>
+       <p class="offline">Agendamento indisponível no momento</p>
+       <p>Atendimento: Segunda a Sexta<br>08h às 18h</p>`;
+  }
+</script>
+
+</body>
+</html>
